@@ -57,11 +57,10 @@ Create a `.env` (see your team’s `.env.example` or internal docs). Typical var
 | `STRIPE_WEBHOOK_SECRET` | Stripe webhooks |
 | `STRIPE_PLUS_PLAN_ID` / `STRIPE_PREMIUM_PLAN_ID` | Stripe price IDs for Plus / Pro |
 | `TAVILY_API_KEY` | Web search & URL tools |
-| `GOOGLE_GENERATIVE_AI_API_KEY` | Google Gemini (required when not using the gateway) |
-| `AI_GATEWAY_API_KEY` | Optional — if set, chat uses [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) (multi-provider). Omit on Render and use Google only. |
+| `GOOGLE_GENERATIVE_AI_API_KEY` | Google Gemini (dev / title generation) |
 | `NEXT_PUBLIC_APP_URL` | Public app URL for API client |
 
-**AI routing:** With `AI_GATEWAY_API_KEY` unset, production uses `@ai-sdk/google` only. Non-Google entries in the model picker still call Gemini under the hood (`gemini-2.5-flash`). Set `AI_GATEWAY_API_KEY` when deploying on Vercel and you want Claude / OpenAI / etc. via the gateway.
+Production chat may use the AI Gateway; ensure gateway credentials and model IDs match `lib/ai/providers.ts` and `lib/ai/models.ts`.
 
 ### Database
 
