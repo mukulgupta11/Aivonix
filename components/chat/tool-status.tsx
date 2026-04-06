@@ -44,7 +44,7 @@ export const getToolStatus = (
             icon: SearchIcon,
           }
         : toolName === "webSearch"
-          ? { text: "Web saerch results", icon: GlobeIcon }
+          ? { text: "Web search results", icon: GlobeIcon }
           : toolName === "extractWebUrl"
             ? { text: "Extracted content", icon: GlobeIcon }
             : { text: "Done", icon: Lightbulb };
