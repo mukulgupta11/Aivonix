@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { customProvider } from "ai";
-import { gateway } from "@ai-sdk/gateway";
 import { google } from "@ai-sdk/google";
 import { chatModels, DEVELOPMENT_CHAT_MODEL } from "./models";
 
@@ -10,15 +9,17 @@ export const isProduction = NODE_ENV === "production";
 
 const createLanguageModels = (isProduction: boolean) => {
   const models: Record<string, any> = {};
-  chatModels.forEach(
-    (model) => (models[model.id] = gateway.languageModel(model.id))
-  );
+  
+  chatModels.forEach((model) => {
+    if (model.id.startsWith("google/")) {
+      models[model.id] = google(model.id.replace("google/", ""));
+    }
+  });
 
-  models[DEVELOPMENT_CHAT_MODEL] = google.languageModel(DEVELOPMENT_CHAT_MODEL);
+  models[DEVELOPMENT_CHAT_MODEL] = google(DEVELOPMENT_CHAT_MODEL);
 
-  models["title-model"] = isProduction
-    ? gateway.languageModel("google/gemini-2.0-flash")
-    : google.languageModel(DEVELOPMENT_CHAT_MODEL);
+  // Use the same model for title generation
+  models["title-model"] = google(DEVELOPMENT_CHAT_MODEL);
 
   return models;
 };
