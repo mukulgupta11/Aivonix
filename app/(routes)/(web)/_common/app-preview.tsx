@@ -6,20 +6,37 @@ import {
   BrainCircuit,
   MessageSquareText,
   NotebookPen,
-  TrendingUp,
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
 
 const stats = [
-  { label: "notes organized", value: "18k+" },
-  { label: "answers grounded", value: "92%" },
-  { label: "teams aligned", value: "4.8/5" },
+  { label: "notes organized", value: "18k+", accent: "#0ea5a4", bg: "#e4faf4" },
+  { label: "answers grounded", value: "92%", accent: "#4f6df5", bg: "#eef1ff" },
+  { label: "teams aligned", value: "4.8/5", accent: "#f5664d", bg: "#fff0eb" },
 ];
 
 const rails = [
-  { icon: NotebookPen, title: "Capture", text: "Save raw ideas and decisions." },
-  { icon: BrainCircuit, title: "Connect", text: "Link context across threads." },
-  { icon: MessageSquareText, title: "Answer", text: "Ask AI with memory intact." },
+  {
+    icon: NotebookPen,
+    title: "Capture",
+    text: "Save raw ideas and decisions.",
+    accent: "#0ea5a4",
+    bg: "#e4faf4",
+  },
+  {
+    icon: BrainCircuit,
+    title: "Connect",
+    text: "Link context across threads.",
+    accent: "#4f6df5",
+    bg: "#eef1ff",
+  },
+  {
+    icon: MessageSquareText,
+    title: "Answer",
+    text: "Ask AI with memory intact.",
+    accent: "#f5664d",
+    bg: "#fff0eb",
+  },
 ];
 
 const AppPreview = () => {
@@ -49,9 +66,16 @@ const AppPreview = () => {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-lg border border-[#eceae4] bg-[#f7f4ed] p-4"
+                className="rounded-lg border p-4"
+                style={{
+                  borderColor: `${stat.accent}44`,
+                  backgroundColor: stat.bg,
+                }}
               >
-                <p className="text-2xl font-semibold text-[#1c1c1c]">
+                <p
+                  className="text-2xl font-semibold"
+                  style={{ color: stat.accent }}
+                >
                   {stat.value}
                 </p>
                 <p className="mt-1 text-sm text-[#5f5f5d]">{stat.label}</p>
@@ -73,7 +97,7 @@ const AppPreview = () => {
               priority
               className="h-auto w-full"
             />
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-1 origin-left bg-[#0ea5a4] opacity-90" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-1 origin-left bg-[linear-gradient(90deg,#0ea5a4,#4f6df5,#f5664d)] opacity-90" />
           </motion.div>
 
           <div className="mt-5 grid gap-3 md:grid-cols-3">
@@ -84,10 +108,17 @@ const AppPreview = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="rounded-lg border border-[#eceae4] bg-[#f7f4ed] p-5"
+                className="rounded-lg border p-5"
+                style={{
+                  borderColor: `${item.accent}44`,
+                  background: `linear-gradient(180deg, ${item.bg}, #f7f4ed)`,
+                }}
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex size-9 items-center justify-center rounded-md bg-[#1c1c1c] text-[#fcfbf8]">
+                  <span
+                    className="flex size-9 items-center justify-center rounded-md text-[#fcfbf8]"
+                    style={{ backgroundColor: item.accent }}
+                  >
                     <item.icon className="size-5" />
                   </span>
                   <h3 className="font-medium text-[#1c1c1c]">{item.title}</h3>
@@ -98,20 +129,6 @@ const AppPreview = () => {
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="mt-5 flex items-center gap-3 rounded-lg border border-[#eceae4] bg-[#1c1c1c] p-4 text-[#fcfbf8]"
-          >
-            <TrendingUp className="size-5 text-[#8ee7d6]" />
-            <p className="text-sm leading-6">
-              Recruiters and customers can scan the same signal: organized
-              thinking, clear output, and a product that feels ready.
-            </p>
-          </motion.div>
         </div>
       </div>
     </section>

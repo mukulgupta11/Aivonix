@@ -117,7 +117,11 @@ export default function LandingFeatures() {
               key={f.id}
               variants={item}
               whileHover={{ y: -6 }}
-              className="group rounded-lg border border-[#eceae4] bg-[#fcfbf8] p-6 transition-colors hover:border-[rgba(28,28,28,0.4)]"
+              className="group rounded-lg border bg-[#fcfbf8] p-6 transition-colors hover:border-[rgba(28,28,28,0.4)]"
+              style={{
+                borderColor: `${f.accent}33`,
+                background: `linear-gradient(180deg, ${f.accent}14, #fcfbf8 48%)`,
+              }}
             >
               <div
                 className="flex size-11 items-center justify-center rounded-md text-[#fcfbf8]"
