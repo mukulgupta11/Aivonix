@@ -1,19 +1,42 @@
 import React from "react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-const Logo = (props: { url?: string }) => {
-  const { url = "/" } = props;
+type LogoProps = {
+  url?: string;
+  inverse?: boolean;
+  surface?: "auto" | "light" | "dark";
+};
+
+const Logo = (props: LogoProps) => {
+  const { url = "/", inverse = false, surface = "auto" } = props;
+  const isDarkSurface = inverse || surface === "dark";
+
   return (
-    <Link href={url} className="w-fit flex items-center gap-2">
+    <Link href={url} className="flex w-fit items-center gap-2">
       <div
-        className="flex aspect-square size-9 items-center justify-center rounded-lg overflow-hidden bg-gradient-to-br from-primary to-violet-600 text-primary-foreground shadow-sm ring-1 ring-primary/20"
+        className={cn(
+          "flex aspect-square size-9 items-center justify-center overflow-hidden rounded-md shadow-[rgba(255,255,255,0.2)_0px_0.5px_0px_0px_inset,rgba(0,0,0,0.2)_0px_0px_0px_0.5px_inset]",
+          isDarkSurface
+            ? "bg-[#fcfbf8] text-[#1c1c1c]"
+            : "bg-[#1c1c1c] text-[#fcfbf8]"
+        )}
         aria-hidden
       >
-        <span className="font-bold text-sm tracking-tight">A</span>
+        <span className="text-sm font-semibold">A</span>
       </div>
 
       <div className="flex-1 text-left text-base leading-tight">
-        <span className="font-semibold tracking-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
+        <span
+          className={cn(
+            "font-semibold",
+            isDarkSurface && "text-[#fcfbf8]",
+            surface === "light" && !inverse && "text-[#1c1c1c]",
+            surface === "auto" &&
+              !inverse &&
+              "text-[#1c1c1c] dark:text-[#fcfbf8]"
+          )}
+        >
           Aivonix
         </span>
       </div>
