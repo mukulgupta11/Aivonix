@@ -19,7 +19,7 @@ const Logo = (props: LogoProps) => {
           "flex aspect-square size-9 items-center justify-center overflow-hidden rounded-md shadow-[rgba(255,255,255,0.2)_0px_0.5px_0px_0px_inset,rgba(0,0,0,0.2)_0px_0px_0px_0.5px_inset]",
           isDarkSurface
             ? "bg-[#fcfbf8] text-[#1c1c1c]"
-            : "bg-[#1c1c1c] text-[#fcfbf8]"
+            : "bg-[linear-gradient(135deg,#0ea5a4,#4f6df5_55%,#f5664d)] text-[#fcfbf8]"
         )}
         aria-hidden
       >
