@@ -49,7 +49,7 @@ function Navbar() {
           </Link>
           <Link
             href="/auth/sign-up"
-            className="hidden items-center gap-2 rounded-md bg-[#1c1c1c] px-4 py-2 text-sm text-[#fcfbf8] shadow-[rgba(255,255,255,0.2)_0px_0.5px_0px_0px_inset,rgba(0,0,0,0.2)_0px_0px_0px_0.5px_inset,rgba(0,0,0,0.05)_0px_1px_2px] transition hover:bg-[#2a2a2a] sm:flex"
+            className="hidden items-center gap-2 rounded-md bg-[#0f8f8d] px-4 py-2 text-sm text-[#fcfbf8] shadow-[rgba(255,255,255,0.22)_0px_0.5px_0px_0px_inset,rgba(15,143,141,0.35)_0px_8px_22px] transition hover:bg-[#0b7472] sm:flex"
           >
             Try Aivonix free
             <ArrowRight className="size-4" />
@@ -84,7 +84,7 @@ function Navbar() {
           <Link
             href="/auth/sign-up"
             onClick={() => setOpen(false)}
-            className="mt-1 flex items-center justify-between rounded-md bg-[#1c1c1c] px-3 py-2 text-sm text-[#fcfbf8]"
+            className="mt-1 flex items-center justify-between rounded-md bg-[#0f8f8d] px-3 py-2 text-sm text-[#fcfbf8]"
           >
             Try Aivonix free
             <ArrowRight className="size-4" />

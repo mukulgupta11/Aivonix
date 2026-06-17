@@ -9,15 +9,45 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const trustSignals = [
-  { value: "60 sec", label: "from idea to saved context" },
-  { value: "3x", label: "faster knowledge retrieval" },
-  { value: "24/7", label: "AI workspace memory" },
+  {
+    value: "60 sec",
+    label: "from idea to saved context",
+    accent: "#0ea5a4",
+    bg: "#e4faf4",
+  },
+  {
+    value: "3x",
+    label: "faster knowledge retrieval",
+    accent: "#4f6df5",
+    bg: "#eef1ff",
+  },
+  {
+    value: "24/7",
+    label: "AI workspace memory",
+    accent: "#f5664d",
+    bg: "#fff0eb",
+  },
 ];
 
 const workflowSteps = [
-  { label: "Capture", detail: "Notes, links, decisions" },
-  { label: "Reason", detail: "Chat with grounded context" },
-  { label: "Share", detail: "Turn answers into action" },
+  {
+    label: "Capture",
+    detail: "Notes, links, decisions",
+    accent: "#0ea5a4",
+    bg: "#e4faf4",
+  },
+  {
+    label: "Reason",
+    detail: "Chat with grounded context",
+    accent: "#4f6df5",
+    bg: "#eef1ff",
+  },
+  {
+    label: "Share",
+    detail: "Turn answers into action",
+    accent: "#f5664d",
+    bg: "#fff0eb",
+  },
 ];
 
 const Hero = () => {
@@ -40,8 +70,8 @@ const Hero = () => {
           sizes="100vw"
           className="object-cover object-top opacity-35 saturate-105"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#f7f4ed_0%,rgba(247,244,237,0.96)_38%,rgba(247,244,237,0.62)_74%,rgba(247,244,237,0.88)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,244,237,0.74)_0%,rgba(247,244,237,0.3)_48%,#f7f4ed_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#f7f4ed_0%,rgba(247,244,237,0.94)_38%,rgba(232,247,255,0.64)_68%,rgba(255,240,235,0.86)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(228,250,244,0.72)_0%,rgba(247,244,237,0.28)_44%,#f7f4ed_100%)]" />
         <div
           className="absolute inset-0 opacity-60"
           style={{
@@ -59,13 +89,13 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
         >
-          <div className="absolute left-8 top-20 h-px w-[30rem] bg-[#1c1c1c]/20" />
-          <div className="absolute left-20 top-48 h-px w-[25rem] bg-[#0ea5a4]/35" />
+          <div className="absolute left-8 top-20 h-px w-[30rem] bg-[#0ea5a4]/35" />
+          <div className="absolute left-20 top-48 h-px w-[25rem] bg-[#4f6df5]/35" />
           <div className="absolute left-28 top-72 h-px w-[22rem] bg-[#f5664d]/35" />
           {!prefersReducedMotion && (
             <>
               <motion.div
-                className="absolute left-8 top-20 h-px w-28 bg-[#1c1c1c]"
+                className="absolute left-8 top-20 h-px w-28 bg-[#0ea5a4]"
                 animate={{ x: [0, 360, 0], opacity: [0, 1, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
               />
@@ -85,11 +115,12 @@ const Hero = () => {
             <motion.div
               key={step.label}
               className={cn(
-                "absolute w-64 rounded-lg border border-[#eceae4] bg-[#fcfbf8]/90 p-4 text-[#1c1c1c] shadow-[0_18px_50px_rgba(28,28,28,0.08)] backdrop-blur-md",
+                "absolute w-64 rounded-lg border bg-[#fcfbf8]/92 p-4 text-[#1c1c1c] shadow-[0_18px_50px_rgba(28,28,28,0.08)] backdrop-blur-md",
                 index === 0 && "left-0 top-0",
                 index === 1 && "right-6 top-32",
                 index === 2 && "left-24 bottom-12"
               )}
+              style={{ borderColor: `${step.accent}55` }}
               animate={
                 prefersReducedMotion
                   ? undefined
@@ -102,7 +133,10 @@ const Hero = () => {
               }}
             >
               <div className="flex items-center gap-2 text-sm font-medium">
-                <span className="flex size-7 items-center justify-center rounded-md bg-[#1c1c1c] text-[#fcfbf8]">
+                <span
+                  className="flex size-7 items-center justify-center rounded-md text-[#fcfbf8]"
+                  style={{ backgroundColor: step.accent }}
+                >
                   {index + 1}
                 </span>
                 {step.label}
@@ -121,7 +155,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-md border border-[#eceae4] bg-[#fcfbf8]/80 px-3 py-2 text-sm text-[#5f5f5d] shadow-[0_1px_0_rgba(255,255,255,0.8)_inset]"
+            className="mb-5 inline-flex items-center gap-2 rounded-md border border-[#8ee7d6] bg-[#e4faf4]/85 px-3 py-2 text-sm text-[#123431] shadow-[0_1px_0_rgba(255,255,255,0.8)_inset]"
           >
             <Sparkles className="size-4 text-[#0ea5a4]" />
             New AI-powered workspace for sharper launches
@@ -135,7 +169,7 @@ const Hero = () => {
             className="max-w-4xl text-balance text-5xl font-semibold leading-none text-[#1c1c1c] sm:text-6xl lg:text-7xl"
           >
             <span className="block">Aivonix</span>
-            <span className="mt-3 block text-[#1c1c1c]/80">
+            <span className="mt-3 block bg-[linear-gradient(90deg,#0f8f8d,#4f6df5_52%,#f5664d)] bg-clip-text text-transparent">
               AI memory that makes your work impossible to miss.
             </span>
           </motion.h1>
@@ -159,8 +193,8 @@ const Hero = () => {
             <Button
               asChild
               className={cn(
-                "h-11 rounded-md bg-[#1c1c1c] px-5 text-[#fcfbf8] hover:bg-[#2a2a2a]",
-                "shadow-[rgba(255,255,255,0.2)_0px_0.5px_0px_0px_inset,rgba(0,0,0,0.2)_0px_0px_0px_0.5px_inset,rgba(0,0,0,0.08)_0px_8px_24px]"
+                "h-11 rounded-md bg-[#0f8f8d] px-5 text-[#fcfbf8] hover:bg-[#0b7472]",
+                "shadow-[rgba(255,255,255,0.24)_0px_0.5px_0px_0px_inset,rgba(15,143,141,0.32)_0px_10px_28px]"
               )}
             >
               <Link href="/auth/sign-up">
@@ -171,7 +205,7 @@ const Hero = () => {
 
             <Button
               variant="outline"
-              className="h-11 rounded-md border-[rgba(28,28,28,0.4)] bg-transparent px-5 text-[#1c1c1c] hover:bg-[#1c1c1c]/[0.04]"
+              className="h-11 rounded-md border-[#f5664d]/60 bg-[#fff0eb]/70 px-5 text-[#7d291d] hover:bg-[#ffe1d5]"
               asChild
             >
               <Link href="#features">Explore workflow</Link>
@@ -187,10 +221,17 @@ const Hero = () => {
             {trustSignals.map((signal) => (
               <li
                 key={signal.label}
-                className="rounded-lg border border-[#eceae4] bg-[#fcfbf8]/80 p-4 backdrop-blur-md"
+                className="rounded-lg border bg-[#fcfbf8]/84 p-4 backdrop-blur-md"
+                style={{
+                  borderColor: `${signal.accent}44`,
+                  background: `linear-gradient(180deg, ${signal.bg}, rgba(252,251,248,0.88))`,
+                }}
               >
                 <div className="flex items-center gap-2 text-2xl font-semibold text-[#1c1c1c]">
-                  <CheckCircle2 className="size-5 text-[#0ea5a4]" />
+                  <CheckCircle2
+                    className="size-5"
+                    style={{ color: signal.accent }}
+                  />
                   {signal.value}
                 </div>
                 <p className="mt-1 text-sm leading-5 text-[#5f5f5d]">

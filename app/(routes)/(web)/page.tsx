@@ -26,7 +26,9 @@ export default async function Home() {
         style={{
           backgroundImage: `
             linear-gradient(135deg, rgba(14, 165, 164, 0.12), transparent 30%),
-            linear-gradient(225deg, rgba(245, 102, 77, 0.12), transparent 34%),
+            linear-gradient(225deg, rgba(245, 102, 77, 0.14), transparent 34%),
+            linear-gradient(45deg, rgba(79, 109, 245, 0.1), transparent 38%),
+            linear-gradient(315deg, rgba(217, 155, 43, 0.1), transparent 42%),
             linear-gradient(180deg, rgba(252, 251, 248, 0.72), rgba(247, 244, 237, 0.94))
           `,
         }}
