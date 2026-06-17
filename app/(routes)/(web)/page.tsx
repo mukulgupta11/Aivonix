@@ -19,67 +19,41 @@ export default async function Home() {
   }
 
   return (
-    <main className="relative min-h-dvh w-full">
+    <main className="relative min-h-dvh w-full overflow-hidden bg-background text-foreground">
       <div
-        className="absolute inset-0 z-0 dark:hidden animate-gradient-shift bg-[length:200%_200%]"
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            radial-gradient(ellipse 120% 100% at 50% 100%, oklch(0.92 0.06 303) 0%, transparent 55%),
-            radial-gradient(ellipse 80% 60% at 20% 20%, oklch(0.88 0.08 290 / 0.5) 0%, transparent 50%),
-            radial-gradient(ellipse 70% 50% at 80% 10%, oklch(0.9 0.05 320 / 0.45) 0%, transparent 45%)
+            linear-gradient(135deg, rgba(14, 165, 164, 0.12), transparent 30%),
+            linear-gradient(225deg, rgba(245, 102, 77, 0.12), transparent 34%),
+            linear-gradient(180deg, rgba(252, 251, 248, 0.72), rgba(247, 244, 237, 0.94))
           `,
         }}
       />
-      <div
-        className="absolute inset-0 z-0 hidden dark:block animate-gradient-shift bg-[length:200%_200%]"
-        style={{
-          backgroundImage: `
-            radial-gradient(ellipse 120% 100% at 50% 100%, oklch(0.35 0.12 303) 0%, transparent 55%),
-            radial-gradient(ellipse 80% 60% at 15% 15%, oklch(0.4 0.14 290 / 0.35) 0%, transparent 50%),
-            radial-gradient(ellipse 70% 50% at 85% 5%, oklch(0.38 0.1 320 / 0.3) 0%, transparent 45%)
-          `,
-        }}
-      />
-
       <div className="absolute inset-0 z-0 dark:hidden">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: `
-        linear-gradient(to right, rgba(139, 92, 246, 0.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(139, 92, 246, 0.06) 1px, transparent 1px)
-      `,
-            backgroundSize: "56px 56px",
+              linear-gradient(to right, rgba(28, 28, 28, 0.045) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(28, 28, 28, 0.04) 1px, transparent 1px)
+            `,
+            backgroundSize: "64px 64px",
             WebkitMaskImage:
-              "radial-gradient(circle at 50% 40%, rgba(0,0,0,0.85) 65%, transparent 100%)",
+              "linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 88%)",
             maskImage:
-              "radial-gradient(circle at 50% 40%, rgba(0,0,0,0.85) 65%, transparent 100%)",
-          }}
-        />
-      </div>
-      <div className="absolute inset-0 z-0 hidden dark:block">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-        linear-gradient(to right, rgba(167, 139, 250, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(167, 139, 250, 0.08) 1px, transparent 1px)
-      `,
-            backgroundSize: "56px 56px",
-            WebkitMaskImage:
-              "radial-gradient(circle at 50% 40%, rgba(0,0,0,0.75) 60%, transparent 100%)",
-            maskImage:
-              "radial-gradient(circle at 50% 40%, rgba(0,0,0,0.75) 60%, transparent 100%)",
+              "linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 88%)",
           }}
         />
       </div>
 
       <div className="relative z-10">
-        <div className="mx-auto max-w-6xl px-4 py-6 md:py-8">
+        <div className="mx-auto max-w-7xl px-4 py-4 md:py-5">
           <Navbar />
-          <Hero />
-          <AppPreview />
         </div>
+        <Hero />
+        <AppPreview />
         <LandingFeatures />
         <LandingPricing />
         <LandingBlog />
