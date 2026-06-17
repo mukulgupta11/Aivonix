@@ -10,9 +10,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Aivonix — AI second brain for teams & creators",
+  title: "Aivonix - AI second brain for teams and creators",
   description:
-    "Capture ideas, chat with your knowledge, and ship faster with Aivonix — your intelligent workspace.",
+    "Capture ideas, chat with your knowledge, and ship faster with Aivonix, your intelligent workspace.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
