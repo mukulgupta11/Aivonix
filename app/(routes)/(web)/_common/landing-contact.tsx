@@ -100,7 +100,7 @@ export default function LandingContact() {
             </div>
             <Button
               type="submit"
-              className="mt-6 w-full rounded-md bg-[#1c1c1c] text-[#fcfbf8] hover:bg-[#2a2a2a]"
+              className="mt-6 w-full rounded-md bg-[#0f8f8d] text-[#fcfbf8] shadow-[rgba(15,143,141,0.24)_0px_10px_28px] hover:bg-[#0b7472]"
               disabled={pending}
             >
               {pending ? "Sending..." : "Send message"}

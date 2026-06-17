@@ -8,6 +8,12 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { formatMonthlyPriceInr, PLAN_ENUM, PLANS } from "@/lib/constant";
 
+const planAccents = {
+  [PLAN_ENUM.FREE]: { accent: "#0ea5a4", bg: "#e4faf4" },
+  [PLAN_ENUM.PLUS]: { accent: "#4f6df5", bg: "#eef1ff" },
+  [PLAN_ENUM.PREMIUM]: { accent: "#f5664d", bg: "#fff0eb" },
+};
+
 export default function LandingPricing() {
   return (
     <section
@@ -39,6 +45,7 @@ export default function LandingPricing() {
         <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {PLANS.map((plan, i) => {
             const popular = plan.name === PLAN_ENUM.PREMIUM;
+            const palette = planAccents[plan.name];
             return (
               <motion.div
                 key={plan.id}
@@ -47,17 +54,30 @@ export default function LandingPricing() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className={cn(
-                  "relative flex flex-col rounded-lg border border-[#eceae4] bg-[#f7f4ed] p-6 text-[#1c1c1c]",
+                  "relative flex flex-col rounded-lg border bg-[#f7f4ed] p-6 text-[#1c1c1c]",
                   popular &&
-                    "border-[rgba(28,28,28,0.4)] bg-[#1c1c1c] text-[#fcfbf8] lg:-translate-y-3"
+                    "text-[#fcfbf8] shadow-[0_22px_70px_rgba(79,109,245,0.18)] lg:-translate-y-3"
                 )}
+                style={{
+                  borderColor: popular ? palette.accent : `${palette.accent}44`,
+                  borderTopColor: palette.accent,
+                  borderTopWidth: 4,
+                  background: popular
+                    ? "linear-gradient(135deg, #123431 0%, #17305f 54%, #7d291d 100%)"
+                    : `linear-gradient(180deg, ${palette.bg}, #f7f4ed 58%)`,
+                }}
               >
                 {popular && (
-                  <span className="mb-4 w-fit rounded-md bg-[#8ee7d6] px-3 py-1 text-sm font-medium text-[#123431]">
+                  <span className="mb-4 w-fit rounded-md bg-[#ffd8cb] px-3 py-1 text-sm font-medium text-[#7d291d]">
                     Best signal
                   </span>
                 )}
-                <h3 className="text-xl font-medium">{plan.displayName}</h3>
+                <h3
+                  className="text-xl font-medium"
+                  style={{ color: popular ? "#fcfbf8" : palette.accent }}
+                >
+                  {plan.displayName}
+                </h3>
                 <p
                   className={cn(
                     "mt-2 text-sm",
@@ -74,8 +94,9 @@ export default function LandingPricing() {
                   <span
                     className={cn(
                       "text-4xl font-semibold",
-                      popular ? "text-[#fcfbf8]" : "text-[#1c1c1c]"
+                      popular ? "text-[#fcfbf8]" : ""
                     )}
+                    style={{ color: popular ? undefined : palette.accent }}
                   >
                     {formatMonthlyPriceInr(plan.price)}
                   </span>
@@ -99,8 +120,9 @@ export default function LandingPricing() {
                       <Check
                         className={cn(
                           "mt-0.5 size-4 shrink-0",
-                          popular ? "text-[#8ee7d6]" : "text-[#0f8f8d]"
+                          popular ? "text-[#ffd8cb]" : ""
                         )}
+                        style={{ color: popular ? undefined : palette.accent }}
                       />
                       <span
                         className={popular ? "text-[#fcfbf8]" : "text-[#1c1c1c]"}
@@ -115,7 +137,7 @@ export default function LandingPricing() {
                   className={cn(
                     "mt-8 w-full rounded-md",
                     popular
-                      ? "bg-[#fcfbf8] text-[#1c1c1c] hover:bg-[#eceae4]"
+                      ? "bg-[#ffd8cb] text-[#7d291d] hover:bg-[#ffc7b5]"
                       : "border-[rgba(28,28,28,0.4)] bg-transparent text-[#1c1c1c] hover:bg-[#1c1c1c]/[0.04] dark:bg-transparent dark:text-[#1c1c1c]"
                   )}
                   variant={popular ? "default" : "outline"}
