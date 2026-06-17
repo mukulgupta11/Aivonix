@@ -2,57 +2,63 @@
 
 import React from "react";
 import {
-  RiBrainLine,
-  RiChatAiLine,
-  RiFileTextLine,
-  RiFlashlightLine,
-  RiShieldKeyholeLine,
-  RiTeamLine,
-} from "@remixicon/react";
+  BrainCircuit,
+  FileSearch,
+  Gauge,
+  Handshake,
+  LockKeyhole,
+  MessageSquareText,
+} from "lucide-react";
 import { motion } from "motion/react";
 
 const features = [
   {
     id: "ai-chat",
-    title: "Conversational AI",
+    title: "Ask across everything",
     description:
       "Ask questions across your notes and chats; get grounded answers in seconds.",
-    icon: RiChatAiLine,
+    icon: MessageSquareText,
+    accent: "#0ea5a4",
   },
   {
     id: "notes",
-    title: "Notes that sync with context",
+    title: "Notes with context",
     description:
       "Capture ideas, link them to threads, and surface them when you need them.",
-    icon: RiFileTextLine,
+    icon: FileSearch,
+    accent: "#f5664d",
   },
   {
     id: "memory",
     title: "Second brain memory",
     description:
       "Structure knowledge so your team can reuse it instead of reinventing it.",
-    icon: RiBrainLine,
+    icon: BrainCircuit,
+    accent: "#8a6fdf",
   },
   {
     id: "speed",
-    title: "Fast workflows",
+    title: "Fast handoffs",
     description:
       "Short prompts, smart defaults, and a UI that stays out of your way.",
-    icon: RiFlashlightLine,
+    icon: Gauge,
+    accent: "#d99b2b",
   },
   {
     id: "security",
     title: "Privacy-minded",
     description:
-      "Your workspace stays yours—built for teams that care about control.",
-    icon: RiShieldKeyholeLine,
+      "Your workspace stays yours, built for teams that care about control.",
+    icon: LockKeyhole,
+    accent: "#377f61",
   },
   {
     id: "collab",
-    title: "Built for teams",
+    title: "Customer-ready polish",
     description:
       "Share context, not chaos: one place for decisions and follow-ups.",
-    icon: RiTeamLine,
+    icon: Handshake,
+    accent: "#c75c8a",
   },
 ];
 
@@ -73,28 +79,29 @@ export default function LandingFeatures() {
   return (
     <section
       id="features"
-      className="scroll-mt-24 py-24 md:py-28"
+      className="scroll-mt-24 bg-[#f7f4ed] py-20 md:py-28"
       aria-labelledby="features-heading"
     >
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="mx-auto max-w-2xl text-center"
+          className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end"
         >
-          <p className="text-sm font-medium uppercase tracking-wider text-primary">
-            Features
-          </p>
-          <h2
-            id="features-heading"
-            className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl"
-          >
-            Everything you need to think clearly and move faster
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            Aivonix connects your notes, chats, and AI in one calm workspace.
+          <div>
+            <p className="text-sm font-medium text-[#0f8f8d]">Features</p>
+            <h2
+              id="features-heading"
+              className="mt-3 text-3xl font-semibold leading-tight text-[#1c1c1c] sm:text-4xl lg:text-5xl"
+            >
+              The customer-facing polish, backed by real AI utility.
+            </h2>
+          </div>
+          <p className="max-w-2xl text-lg leading-8 text-[#5f5f5d]">
+            Aivonix connects your notes, chats, and AI in one calm workspace, so
+            every answer has a trail and every project has a memory.
           </p>
         </motion.div>
 
@@ -103,19 +110,25 @@ export default function LandingFeatures() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-40px" }}
-          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           {features.map((f) => (
             <motion.li
               key={f.id}
               variants={item}
-              className="group rounded-2xl border border-border/80 bg-card/50 p-6 shadow-sm backdrop-blur-sm transition hover:border-primary/25 hover:shadow-md"
+              whileHover={{ y: -6 }}
+              className="group rounded-lg border border-[#eceae4] bg-[#fcfbf8] p-6 transition-colors hover:border-[rgba(28,28,28,0.4)]"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary/15">
-                <f.icon className="h-6 w-6" />
+              <div
+                className="flex size-11 items-center justify-center rounded-md text-[#fcfbf8]"
+                style={{ backgroundColor: f.accent }}
+              >
+                <f.icon className="size-6" />
               </div>
-              <h3 className="mt-4 text-lg font-semibold">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <h3 className="mt-5 text-xl font-medium text-[#1c1c1c]">
+                {f.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-[#5f5f5d]">
                 {f.description}
               </p>
             </motion.li>
