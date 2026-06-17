@@ -11,11 +11,11 @@ const footerLinks = [
 
 export default function LandingFooter() {
   return (
-    <footer className="border-t border-border/60 bg-background py-12">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 md:flex-row md:items-center md:justify-between">
+    <footer className="border-t border-[#eceae4] bg-[#1c1c1c] py-12 text-[#fcfbf8]">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <Logo url="/" />
-          <p className="mt-3 max-w-sm text-sm text-muted-foreground">
+          <Logo url="/" inverse />
+          <p className="mt-3 max-w-sm text-sm leading-6 text-[#fcfbf8]/70">
             Aivonix helps you capture ideas, chat with your knowledge, and ship
             with clarity.
           </p>
@@ -26,7 +26,7 @@ export default function LandingFooter() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-muted-foreground transition hover:text-foreground"
+                  className="text-[#fcfbf8]/70 transition hover:text-[#fcfbf8]"
                 >
                   {l.label}
                 </Link>
@@ -35,7 +35,7 @@ export default function LandingFooter() {
             <li>
               <Link
                 href="/auth/sign-in"
-                className="text-muted-foreground transition hover:text-foreground"
+                className="text-[#fcfbf8]/70 transition hover:text-[#fcfbf8]"
               >
                 Sign in
               </Link>
@@ -43,8 +43,8 @@ export default function LandingFooter() {
           </ul>
         </nav>
       </div>
-      <div className="mx-auto mt-10 max-w-6xl border-t border-border/40 px-4 pt-8 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Aivonix. All rights reserved.
+      <div className="mx-auto mt-10 max-w-7xl border-t border-[#fcfbf8]/10 px-4 pt-8 text-center text-xs text-[#fcfbf8]/55">
+        Copyright {new Date().getFullYear()} Aivonix. All rights reserved.
       </div>
     </footer>
   );
