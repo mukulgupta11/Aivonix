@@ -73,5 +73,5 @@ export const PLANS = [
 
 /** Monthly list price shown in product UI (actual charge uses Stripe price IDs). */
 export function formatMonthlyPriceInr(amount: number): string {
-  return `₹${amount.toLocaleString("en-IN")}`;
+  return `Rs. ${amount.toLocaleString("en-IN")}`;
 }
