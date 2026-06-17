@@ -13,6 +13,8 @@ const posts = [
       "How to structure notes and prompts so your AI actually remembers what matters.",
     date: "Mar 12, 2026",
     read: "6 min read",
+    accent: "#0ea5a4",
+    bg: "#e4faf4",
   },
   {
     slug: "from-chaos-to-clarity",
@@ -21,6 +23,8 @@ const posts = [
       "A simple weekly rhythm that keeps teams aligned on decisions and next steps.",
     date: "Mar 5, 2026",
     read: "4 min read",
+    accent: "#4f6df5",
+    bg: "#eef1ff",
   },
   {
     slug: "security-privacy",
@@ -29,6 +33,8 @@ const posts = [
       "What we think about data boundaries, retention, and team control.",
     date: "Feb 28, 2026",
     read: "8 min read",
+    accent: "#f5664d",
+    bg: "#fff0eb",
   },
 ];
 
@@ -76,12 +82,16 @@ export default function LandingBlog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.06 }}
-              className="group flex flex-col rounded-lg border border-[#eceae4] bg-[#fcfbf8] p-6 transition-colors hover:border-[rgba(28,28,28,0.4)]"
+              className="group flex flex-col rounded-lg border bg-[#fcfbf8] p-6 transition-colors hover:border-[rgba(28,28,28,0.4)]"
+              style={{
+                borderColor: `${post.accent}33`,
+                background: `linear-gradient(180deg, ${post.bg}, #fcfbf8 52%)`,
+              }}
             >
-              <time className="text-xs text-[#5f5f5d]">
+              <time className="text-xs font-medium" style={{ color: post.accent }}>
                 {post.date} / {post.read}
               </time>
-              <h3 className="mt-3 text-xl font-medium leading-snug text-[#1c1c1c] group-hover:text-[#0f8f8d]">
+              <h3 className="mt-3 text-xl font-medium leading-snug text-[#1c1c1c]">
                 <Link href={`/blog/${post.slug}`}>{post.title}</Link>
               </h3>
               <p className="mt-3 flex-1 text-sm leading-6 text-[#5f5f5d]">
@@ -90,6 +100,7 @@ export default function LandingBlog() {
               <Link
                 href={`/blog/${post.slug}`}
                 className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[#1c1c1c]"
+                style={{ color: post.accent }}
               >
                 Read article
                 <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />

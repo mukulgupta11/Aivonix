@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: Props) {
         <h1 className="mt-3 text-4xl font-semibold leading-tight text-[#1c1c1c] sm:text-5xl">
           {post.title}
         </h1>
-        <div className="mt-10 space-y-6 rounded-lg border border-[#eceae4] bg-[#fcfbf8] p-6 text-base text-[#5f5f5d] md:p-8">
+        <div className="mt-10 space-y-6 rounded-lg border border-[#8ee7d6] bg-[linear-gradient(180deg,#e4faf4,#fcfbf8_46%)] p-6 text-base text-[#5f5f5d] md:p-8">
           {post.body.map((p, i) => (
             <p key={i} className="leading-8">
               {p}

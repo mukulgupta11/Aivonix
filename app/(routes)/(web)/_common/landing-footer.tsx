@@ -11,7 +11,7 @@ const footerLinks = [
 
 export default function LandingFooter() {
   return (
-    <footer className="border-t border-[#eceae4] bg-[#1c1c1c] py-12 text-[#fcfbf8]">
+    <footer className="border-t border-[#eceae4] bg-[linear-gradient(135deg,#123431_0%,#17305f_58%,#7d291d_100%)] py-12 text-[#fcfbf8]">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:flex-row md:items-center md:justify-between">
         <div>
           <Logo url="/" inverse />
