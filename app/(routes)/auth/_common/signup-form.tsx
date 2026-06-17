@@ -1,12 +1,14 @@
 "use client";
-import { z } from "zod";
+
 import React, { useState } from "react";
-import { toast } from "sonner";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { RiLoader2Line } from "@remixicon/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -23,11 +25,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
 
 const signUpSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 char"),
+  name: z.string().min(2, "Name must be at least 2 chars"),
   email: z.email("Invalid email").min(1, "Email required"),
   password: z.string().min(6, "Password must be at least 6 chars"),
 });
@@ -36,7 +37,7 @@ type SignUpFormValues = z.infer<typeof signUpSchema>;
 
 const SignUpForm = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<SignUpFormValues>({
     resolver: zodResolver(signUpSchema),
@@ -70,85 +71,96 @@ const SignUpForm = () => {
       }
     );
   }
+
   return (
-    <div className="flex flex-col gap-6">
-      <Card className="!bg-transparent border-0">
-        <CardHeader className="text-center">
-          <CardTitle className="text-xl">Create an Account</CardTitle>
-          <CardDescription>Create an Aivonix account</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="John Doe" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="johndoe@example.com"
-                        type="email"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+    <Card className="rounded-lg border-[#eceae4] bg-[#fcfbf8]/90 text-[#1c1c1c] shadow-none backdrop-blur-md">
+      <CardHeader className="text-center">
+        <CardTitle className="text-2xl font-semibold text-[#1c1c1c]">
+          Create an account
+        </CardTitle>
+        <CardDescription className="text-[#5f5f5d]">
+          Start building your Aivonix workspace
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="John Doe"
+                      className="border-[#eceae4] bg-[#f7f4ed] text-[#1c1c1c] placeholder:text-[#5f5f5d] dark:bg-[#f7f4ed] dark:text-[#1c1c1c]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="johndoe@example.com"
+                      type="email"
+                      className="border-[#eceae4] bg-[#f7f4ed] text-[#1c1c1c] placeholder:text-[#5f5f5d] dark:bg-[#f7f4ed] dark:text-[#1c1c1c]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input placeholder="*****" type="password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="*****"
+                      type="password"
+                      className="border-[#eceae4] bg-[#f7f4ed] text-[#1c1c1c] placeholder:text-[#5f5f5d] dark:bg-[#f7f4ed] dark:text-[#1c1c1c]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="w-full text-white"
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full rounded-md bg-[#1c1c1c] text-[#fcfbf8] hover:bg-[#2a2a2a]"
+            >
+              {isLoading && <Loader2 className="size-4 animate-spin" />}
+              Sign Up
+            </Button>
+            <div className="text-center text-sm text-[#5f5f5d]">
+              Already have an account?{" "}
+              <Link
+                href="/auth/sign-in"
+                className="font-medium text-[#1c1c1c] underline underline-offset-4"
               >
-                {isLoading && (
-                  <RiLoader2Line className="w-4 h-4 animate-spin" />
-                )}
-                Sign Up
-              </Button>
-              <div className="text-center text-sm">
-                Already have an account?{" "}
-                <Link
-                  href="/auth/sign-in"
-                  className="underline underline-offset-4"
-                >
-                  Sign in
-                </Link>
-              </div>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-    </div>
+                Sign in
+              </Link>
+            </div>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
   );
 };
 
