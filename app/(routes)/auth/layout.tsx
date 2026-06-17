@@ -25,7 +25,8 @@ export default async function AuthLayout({
         style={{
           backgroundImage: `
             linear-gradient(135deg, rgba(14, 165, 164, 0.12), transparent 32%),
-            linear-gradient(225deg, rgba(245, 102, 77, 0.12), transparent 36%)
+            linear-gradient(225deg, rgba(245, 102, 77, 0.13), transparent 36%),
+            linear-gradient(45deg, rgba(79, 109, 245, 0.1), transparent 42%)
           `,
         }}
       />

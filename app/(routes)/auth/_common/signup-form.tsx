@@ -143,7 +143,7 @@ const SignUpForm = () => {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full rounded-md bg-[#1c1c1c] text-[#fcfbf8] hover:bg-[#2a2a2a]"
+              className="w-full rounded-md bg-[#0f8f8d] text-[#fcfbf8] hover:bg-[#0b7472]"
             >
               {isLoading && <Loader2 className="size-4 animate-spin" />}
               Sign Up
